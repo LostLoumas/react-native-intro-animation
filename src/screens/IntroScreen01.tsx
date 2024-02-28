@@ -9,10 +9,14 @@ import ScreenIndicators from "../components/ScreenIndicators";
 import PrimaryButton from "../components/PrimaryButton";
 import Animated, { FadeInDown, FadeInUp } from "react-native-reanimated";
 
+const AnimatedText = Animated.createAnimatedComponent(Text);
+
 const IntroScreen01 = ({
   navigation,
 }: RootStackScreenProps<"IntroScreen01">) => {
+  
   const theme = useTheme();
+
   return (
     <SafeAreaView style={{ backgroundColor: theme.colors.card, flex: 1 }}>
       <Animated.View
@@ -22,23 +26,22 @@ const IntroScreen01 = ({
         <Artwork01 width={300} height={300} />
       </Animated.View>
       <View style={{ padding: 24 }}>
-        <Animated.Text
+        <AnimatedText
           entering={FadeInDown.duration(1000).springify()}
           style={{ fontSize: 40, fontWeight: "800", color: theme.colors.text }}
         >
           {INTRO_SCREEN_01.title}
-        </Animated.Text>
-        <Animated.Text
+        </AnimatedText>
+        <AnimatedText
           entering={FadeInDown.delay(100).duration(1000).springify()}
           style={{
-            opacity: 0.5,
             marginTop: 16,
             fontSize: 16,
             color: theme.colors.text,
           }}
         >
           {INTRO_SCREEN_01.description}
-        </Animated.Text>
+        </AnimatedText>
         <Animated.View
           entering={FadeInDown.delay(200).duration(1000).springify()}
         >

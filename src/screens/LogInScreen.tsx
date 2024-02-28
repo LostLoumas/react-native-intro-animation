@@ -84,7 +84,7 @@ const LogInScreen = ({ navigation }: RootStackScreenProps<"LogInScreen">) => {
               style={{ position: "relative", width: "100%" }}
             >
               <TextInput
-                placeholder="Your Email"
+                placeholder="Nome Completo"
                 style={{
                   fontSize: 16,
                   fontWeight: "500",
@@ -114,7 +114,7 @@ const LogInScreen = ({ navigation }: RootStackScreenProps<"LogInScreen">) => {
               style={{ position: "relative", width: "100%" }}
             >
               <TextInput
-                placeholder="Your Password"
+                placeholder="Data De Nascimento"
                 style={{
                   fontSize: 16,
                   fontWeight: "500",
@@ -143,7 +143,7 @@ const LogInScreen = ({ navigation }: RootStackScreenProps<"LogInScreen">) => {
               entering={FadeInDown.delay(600).duration(1000).springify()}
             >
               <PrimaryButton
-                label="Log In"
+                label="Proximo"
                 onPress={() => navigation.navigate("LogInScreen")}
               />
             </Animated.View>

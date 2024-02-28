@@ -1,12 +1,12 @@
 export const INTRO_SCREEN_01 = {
-  title: "Connect With Creators Easily",
-  description: "Thank you for choosing us, we can save your lovely time.",
+  title: "Cria a sua conta com facilidade",
+  description: "faça abertura da sua conta bancaria de uma forma facil e eficiente",
 };
 export const INTRO_SCREEN_02 = {
-  title: "Get Inspiration From Creators",
-  description: "Find your favorite creators and get insperation from them",
+  title: "A sua Segurança è a nossa preocupacao",
+  description: "Proteja os seus dados com segurança biometrica ou dois factores de autenticacao",
 };
 export const LOG_IN_SCREEN = {
-  title: "Let's\nGet Started",
-  description: "To register for an account, kindly enter your details",
+  title: "Começar\na sua Jornada",
+  description: "Por favor introduza os seus dados, nome e data de nascimento.",
 };

@@ -63,7 +63,7 @@ const IntroScreen02 = ({
           style={{ alignItems: "center" }}
         >
           <PrimaryButton
-            label="Next"
+            label="Proximo"
             onPress={() => navigation.replace("LogInScreen")}
           />
         </Animated.View>

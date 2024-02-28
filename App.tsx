@@ -20,14 +20,14 @@ export default function App() {
             ...DarkTheme,
             colors: {
               ...DarkTheme.colors,
-              primary: "#fff",
+              primary: "#ff8c00",
             },
           }
         : {
             ...DefaultTheme,
             colors: {
               ...DefaultTheme.colors,
-              primary: "#000",
+              primary: "#262c40",
             },
           },
     [colorScheme]
