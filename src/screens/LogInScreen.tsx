@@ -6,7 +6,7 @@ import {
   KeyboardAvoidingView,
   useWindowDimensions,
 } from "react-native";
-import React from "react";
+import React, { useState } from 'react'
 import { RootStackScreenProps } from "../navigators/RootNavigator";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "@react-navigation/native";
@@ -15,10 +15,16 @@ import Artwork03 from "../components/artworks/Artwork03";
 import { LOG_IN_SCREEN } from "../utils/constants";
 import PrimaryButton from "../components/PrimaryButton";
 import Animated, { FadeInDown, FadeInUp } from "react-native-reanimated";
+import DatePicker from 'react-native-date-picker'
+
 
 const LogInScreen = ({ navigation }: RootStackScreenProps<"LogInScreen">) => {
+
   const theme = useTheme();
   const dimensions = useWindowDimensions();
+  
+  const [date, setDate] = useState(new Date())
+  const [open, setOpen] = useState(false)
 
   return (
     <KeyboardAvoidingView behavior="position" style={{ flex: 1 }}>
@@ -39,9 +45,6 @@ const LogInScreen = ({ navigation }: RootStackScreenProps<"LogInScreen">) => {
             flexDirection: "row",
           }}
         >
-          <TouchableOpacity onPress={() => navigation.replace("IntroScreen02")}>
-            <Icons name="arrow-back-ios" size={24} color={theme.colors.text} />
-          </TouchableOpacity>
         </Animated.View>
 
         <Animated.View
@@ -113,6 +116,7 @@ const LogInScreen = ({ navigation }: RootStackScreenProps<"LogInScreen">) => {
               entering={FadeInDown.delay(400).duration(1000).springify()}
               style={{ position: "relative", width: "100%" }}
             >
+              
               <TextInput
                 placeholder="Data De Nascimento"
                 style={{
@@ -144,7 +148,7 @@ const LogInScreen = ({ navigation }: RootStackScreenProps<"LogInScreen">) => {
             >
               <PrimaryButton
                 label="Proximo"
-                onPress={() => navigation.navigate("LogInScreen")}
+                onPress={() => navigation.navigate("IntroScreen03")}
               />
             </Animated.View>
           </View>

@@ -1,12 +1,12 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
-import { RootStackScreenProps } from "../navigators/RootNavigator";
+import { RootStackScreenProps } from "../../navigators/RootNavigator";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { INTRO_SCREEN_01 } from "../utils/constants";
-import Artwork01 from "../components/artworks/Artwork01";
+import { INTRO_SCREEN_01 } from "../../utils/constants";
+import Artwork01 from "../../components/artworks/Artwork01";
 import { useTheme } from "@react-navigation/native";
-import ScreenIndicators from "../components/ScreenIndicators";
-import PrimaryButton from "../components/PrimaryButton";
+import ScreenIndicators from "../../components/ScreenIndicators";
+import PrimaryButton from "../../components/PrimaryButton";
 import Animated, { FadeInDown, FadeInUp } from "react-native-reanimated";
 
 const AnimatedText = Animated.createAnimatedComponent(Text);
@@ -19,6 +19,7 @@ const IntroScreen01 = ({
 
   return (
     <SafeAreaView style={{ backgroundColor: theme.colors.card, flex: 1 }}>
+      
       <Animated.View
         entering={FadeInUp.duration(1000).springify()}
         style={{ alignItems: "center", flex: 1, justifyContent: "center" }}
@@ -53,7 +54,7 @@ const IntroScreen01 = ({
         >
           <PrimaryButton
             label="Next"
-            onPress={() => navigation.replace("IntroScreen02")}
+            onPress={() => navigation.replace("BankSelect")}
           />
         </Animated.View>
       </View>
