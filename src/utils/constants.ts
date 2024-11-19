@@ -16,8 +16,8 @@ export const LOG_IN_SCREEN = {
 };
 
 export const LOG_IN = {
-  title: "Descubra o Poder da Integração",
-  description: "Conecte-se instantaneamente com os Principais Bancos e Serviços.",
+  title: "A farmacia em sua mao.",
+  description: "procure os seus medicamentos com mais facilidade",
 };
 
 export const RESGISTER_SCREEN2 = {

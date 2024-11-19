@@ -44,6 +44,7 @@ const RootNavigator = () => {
           animation: "fade",
         }}
       >
+        <RootStack.Screen name="LandingPage" component={LandingPage}/>
         <RootStack.Screen name="Login" component={Login}/>
         <RootStack.Screen name="IntroScreen01" component={IntroScreen01} />
         <RootStack.Screen name="IntroScreen02" component={IntroScreen02} />
