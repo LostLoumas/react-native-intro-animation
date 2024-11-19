@@ -144,7 +144,7 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
             >
               <PrimaryButton
                 label="Log In"
-                onPress={() => navigation.navigate("LogInScreen")}
+                onPress={() =>navigation.navigate('DrawerNavigator', { screen: 'Dashy' })}
               />
             </Animated.View>
           </View>

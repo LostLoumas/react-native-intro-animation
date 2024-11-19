@@ -1,81 +1,124 @@
+import React from "react";
 import {
-    View,
-    Text,
-    TouchableOpacity,
-    TextInput,
-    KeyboardAvoidingView,
-    useWindowDimensions,
-    Button,
-    Image
-  } from "react-native";
-  import React, { useState } from 'react'
-  import { RootStackScreenProps } from "../navigators/RootNavigator";
-  import { SafeAreaView } from "react-native-safe-area-context";
-  import { useTheme } from "@react-navigation/native";
-  import Icons from "@expo/vector-icons/MaterialIcons";
-  import Artwork03 from "../components/artworks/Artwork03";
-  import { ACCOUNT_HUB } from "../utils/constants";
-  import PrimaryButton from "../components/PrimaryButton";
-  import Animated, { FadeInDown, FadeInUp } from "react-native-reanimated";
-  import * as ImagePicker from 'expo-image-picker';
-  import { FontAwesome } from '@expo/vector-icons';
-  import { Colors } from "react-native/Libraries/NewAppScreen";
-  
-  
-  const Dashy = ({ navigation }: RootStackScreenProps<"Dashy">) => {
-
-    const theme = useTheme();
-    const dimensions = useWindowDimensions();
-    const [image, setImage] = useState(null);
-    const [date, setDate] = useState(new Date())
-    const [open, setOpen] = useState(false)
+  View,
+  Text,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  useWindowDimensions,
+  ImageBackground,
+  StyleSheet,
+} from "react-native";
+import { useNavigation, useTheme } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
+import { DrawerParamList } from "../navigators/RootNavigator"; // Adjust the path based on your project structure
 
 
-  
-    return (
-      <KeyboardAvoidingView behavior="position" style={{ flex: 1 }}>
-        <SafeAreaView
+// Type for navigation prop
+type DashyNavigationProp = DrawerNavigationProp<DrawerParamList, "Dashy">;
+
+const Dashy = () => {
+  const theme = useTheme();
+  const dimensions = useWindowDimensions();
+
+
+
+  // Use navigation hook with the correct type
+  const navigation = useNavigation<DashyNavigationProp>();
+
+  return (
+    <View >
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: theme.colors.card,
+          minHeight: dimensions.height,
+        }}
+      >
+        {/* Map Background */}
+        <ImageBackground
+          source={require("../../assets/images/map.png")} // Replace with your image path
           style={{
             flex: 1,
-            backgroundColor: theme.colors.card,
-            minHeight: dimensions.height,
+            width: dimensions.width,
+            height: dimensions.height,
           }}
+          resizeMode="cover"
         >
-  
-   
-          <View style={{ padding: 24 }}>
-            <Animated.Text
-              entering={FadeInDown.duration(1000).springify()}
-              style={{
-                fontSize: 40,
-                fontWeight: "800",
-                color: theme.colors.text,
-              }}
+          {/* Floating Navigation Buttons */}
+          <View style={styles.floatingButtonContainer}>
+            {/* Heart Button */}
+            <TouchableOpacity
+              onPress={() => console.log("Heart button pressed!")}
+              accessibilityLabel="Like"
+              accessible={true}
             >
-              {ACCOUNT_HUB.title}
-            </Animated.Text>
-            <Animated.Text
-              entering={FadeInDown.delay(100).duration(1000).springify()}
-              style={{
-                opacity: 0.5,
-                marginTop: 16,
-                fontSize: 16,
-                color: theme.colors.text,
-              }}
-            >
-              {ACCOUNT_HUB.description}
-            </Animated.Text>
-  
-            <View style={{ alignItems: "center", gap: 16, marginTop: 32 }}>
+              <Ionicons name="heart-outline" size={30} color="#63F92D" />
+            </TouchableOpacity>
 
-            </View>
+            {/* Profile Button */}
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Profile')}
+              accessibilityLabel="Go to Profile"
+              accessible={true}
+            >
+              <Ionicons name="person-outline" size={30} color="#63F92D" />
+            </TouchableOpacity>
           </View>
-        </SafeAreaView>
-      </KeyboardAvoidingView>
-    );
-  };
-  
-  export default Dashy;
-  
-  // Thanks for watching 😃
-  
+
+          {/* Drawer Button */}
+          <TouchableOpacity
+            style={styles.drawerButton}
+            onPress={() => {
+              if (navigation.openDrawer) {
+                navigation.openDrawer();
+              } else {
+                console.error("Drawer navigation is not available.");
+              }
+            }}
+            accessibilityLabel="Open Drawer"
+            accessible={true}
+          >
+            <Ionicons name="menu" size={30} color={theme.dark ? "#fff" : "#63F92D"} />
+          </TouchableOpacity>
+        </ImageBackground>
+      </View>
+    </View>
+  );
+};
+
+// Styles
+const styles = StyleSheet.create({
+  floatingButtonContainer: {
+    position: "absolute",
+    bottom: 50,
+    alignSelf: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    backgroundColor: "#fff",
+    borderRadius: 25,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    width: "60%",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  drawerButton: {
+    position: "absolute",
+    top: 50,
+    left: 20,
+    padding: 10,
+    backgroundColor: "#fff",
+    borderRadius: 50,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+});
+
+export default Dashy;
