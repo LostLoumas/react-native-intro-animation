@@ -14,13 +14,18 @@ const PrimaryButton = ({
   label,
   style,
   labelStyle,
+  accessible, // Added accessible prop
+  accessibilityLabel, // Added accessibilityLabel prop
 }: {
   onPress?: () => void;
   label: string;
   style?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
+  accessible?: boolean; // Added to props
+  accessibilityLabel?: string; // Added to props
 }) => {
   const theme = useTheme();
+  
   return (
     <TouchableOpacity
       style={[
@@ -35,10 +40,12 @@ const PrimaryButton = ({
         style,
       ]}
       onPress={onPress}
+      accessible={accessible} // Pass accessible prop
+      accessibilityLabel={accessibilityLabel} // Pass accessibilityLabel prop
     >
       <Text
         style={[
-          { fontSize: 16, fontWeight: "600", color: 'black' },
+          { fontSize: 16, fontWeight: "600", color: "black" },
           labelStyle,
         ]}
       >

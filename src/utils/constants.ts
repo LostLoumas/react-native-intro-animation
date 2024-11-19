@@ -15,7 +15,7 @@ export const LOG_IN_SCREEN = {
   description: "Por favor introduza os seus dados, nome e data de nascimento.",
 };
 
-export const LOG_IN = {
+export const LADING_PAGE1 = {
   title: "A farmacia em sua mao.",
   description: "procure os seus medicamentos com mais facilidade",
 };

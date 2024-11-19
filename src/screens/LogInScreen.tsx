@@ -15,7 +15,7 @@ import Artwork03 from "../components/artworks/Artwork03";
 import { LOG_IN_SCREEN } from "../utils/constants";
 import PrimaryButton from "../components/PrimaryButton";
 import Animated, { FadeInDown, FadeInUp } from "react-native-reanimated";
-import DatePicker from 'react-native-date-picker'
+
 
 
 const LogInScreen = ({ navigation }: RootStackScreenProps<"LogInScreen">) => {
