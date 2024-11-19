@@ -7,7 +7,7 @@ import {
   useWindowDimensions,
 } from "react-native";
 import React from "react";
-import { RootStackScreenProps } from "../../navigators/RootNavigator";
+import { RootStackScreenProps } from '../../navigators/RootNavigator';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "@react-navigation/native";
 import Icons from "@expo/vector-icons/MaterialIcons";

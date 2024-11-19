@@ -175,7 +175,7 @@ import {
               >
                 <PrimaryButton
                   label="Proximo"
-                  onPress={() => navigation.navigate("Dashy")}                
+                  onPress={() =>navigation.navigate('DrawerNavigator', { screen: 'Dashy' })}                
                 />
               </Animated.View>
             </View>

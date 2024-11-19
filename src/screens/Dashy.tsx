@@ -13,21 +13,16 @@ import { Ionicons } from "@expo/vector-icons";
 import { DrawerNavigationProp } from "@react-navigation/drawer";
 import { DrawerParamList } from "../navigators/RootNavigator"; // Adjust the path based on your project structure
 
-
 // Type for navigation prop
 type DashyNavigationProp = DrawerNavigationProp<DrawerParamList, "Dashy">;
 
 const Dashy = () => {
   const theme = useTheme();
   const dimensions = useWindowDimensions();
-
-
-
-  // Use navigation hook with the correct type
   const navigation = useNavigation<DashyNavigationProp>();
 
   return (
-    <View >
+    <View>
       <View
         style={{
           flex: 1,
@@ -46,14 +41,25 @@ const Dashy = () => {
           resizeMode="cover"
         >
           {/* Floating Navigation Buttons */}
-          <View style={styles.floatingButtonContainer}>
+          <View
+            style={[
+              styles.floatingButtonContainer,
+              {
+                backgroundColor: theme.dark ? "#333" : "#fff", // Adjust background color for dark mode
+              },
+            ]}
+          >
             {/* Heart Button */}
             <TouchableOpacity
-              onPress={() => console.log("Heart button pressed!")}
+              onPress={() => navigation.navigate('Favorite')}
               accessibilityLabel="Like"
               accessible={true}
             >
-              <Ionicons name="heart-outline" size={30} color="#63F92D" />
+              <Ionicons
+                name="heart-outline"
+                size={30}
+                color={theme.dark ? "#63F92D" : "#63F92D"} // Change icon color based on theme
+              />
             </TouchableOpacity>
 
             {/* Profile Button */}
@@ -62,25 +68,38 @@ const Dashy = () => {
               accessibilityLabel="Go to Profile"
               accessible={true}
             >
-              <Ionicons name="person-outline" size={30} color="#63F92D" />
+              <Ionicons
+                name="person-outline"
+                size={30}
+                color={theme.dark ? "#63F92D" : "#63F92D"} // Change icon color based on theme
+              />
             </TouchableOpacity>
           </View>
 
           {/* Drawer Button */}
-          <TouchableOpacity
-            style={styles.drawerButton}
-            onPress={() => {
-              if (navigation.openDrawer) {
-                navigation.openDrawer();
-              } else {
-                console.error("Drawer navigation is not available.");
-              }
-            }}
-            accessibilityLabel="Open Drawer"
-            accessible={true}
-          >
-            <Ionicons name="menu" size={30} color={theme.dark ? "#fff" : "#63F92D"} />
-          </TouchableOpacity>
+         <TouchableOpacity
+         style={[
+           styles.drawerButton, // Your existing styles
+           {
+             backgroundColor: theme.dark ? "#333" : "#fff", // Adjust background color for dark mode
+           },
+         ]}
+         onPress={() => {
+           if (navigation.openDrawer) {
+             navigation.openDrawer();
+           } else {
+             console.error("Drawer navigation is not available.");
+           }
+         }}
+         accessibilityLabel="Open Drawer"
+         accessible={true}
+       >
+         <Ionicons
+           name="menu"
+           size={30}
+           color={theme.dark ? "#63F92D" : "#63F92D"} // Change drawer icon color if needed
+         />
+       </TouchableOpacity>
         </ImageBackground>
       </View>
     </View>
@@ -95,7 +114,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "#fff",
     borderRadius: 25,
     paddingVertical: 10,
     paddingHorizontal: 20,
