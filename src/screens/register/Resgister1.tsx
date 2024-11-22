@@ -7,13 +7,13 @@ import {
   useWindowDimensions,
 } from "react-native";
 import React, { useState } from 'react'
-import { RootStackScreenProps } from "../navigators/RootNavigator";
+import { RootStackScreenProps } from "../../navigators/RootNavigator";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "@react-navigation/native";
 import Icons from "@expo/vector-icons/MaterialIcons";
-import Artwork03 from "../components/artworks/Artwork03";
-import { LOG_IN_SCREEN } from "../utils/constants";
-import PrimaryButton from "../components/PrimaryButton";
+import Artwork03 from "../../components/artworks/Artwork03";
+import { LOG_IN_SCREEN } from "../../utils/constants";
+import PrimaryButton from "../../components/PrimaryButton";
 import Animated, { FadeInDown, FadeInUp } from "react-native-reanimated";
 
 

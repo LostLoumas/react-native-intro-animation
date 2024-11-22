@@ -86,7 +86,7 @@ import {
                 style={{ position: "relative", width: "100%" }}
               >
                 <TextInput
-                  placeholder="Estado Civil"
+                  placeholder="Numero"
                   style={{
                     fontSize: 16,
                     fontWeight: "500",
@@ -117,7 +117,7 @@ import {
               >
                 
                 <TextInput
-                  placeholder="Sexo"
+                  placeholder="Nif"
                   style={{
                     fontSize: 16,
                     fontWeight: "500",

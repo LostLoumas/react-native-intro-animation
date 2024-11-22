@@ -4,6 +4,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   useWindowDimensions,
+  Platform,
 } from "react-native";
 import React from "react";
 import { RootStackScreenProps } from "../../navigators/RootNavigator";
@@ -19,89 +20,102 @@ const LandingPage1 = ({ navigation }: RootStackScreenProps<"LandingPage1">) => {
   const dimensions = useWindowDimensions();
 
   return (
-    <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
-      <SafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor: theme.colors.card,
-          minHeight: dimensions.height,
-        }}
-      >
-        <ScrollView
-          contentContainerStyle={{ flexGrow: 1 }}
-          keyboardShouldPersistTaps="handled"
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+    >
+      <Animated.View style={{ flex: 1, opacity: 1 }}>
+        <SafeAreaView
+          style={{
+            flex: 1,
+            backgroundColor: theme.colors.card,
+            minHeight: dimensions.height,
+          }}
         >
-          <Animated.View
-            entering={FadeInUp.delay(200).duration(1000).springify()}
-            style={{
-              alignItems: "center",
-              flex: 1,
-              justifyContent: "center",
-            }}
+          <ScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+            keyboardShouldPersistTaps="handled"
           >
-            <Artwork03 width={240} height={240} />
-          </Animated.View>
-
-          <View style={{ padding: 24 }}>
-            <Animated.Text
-              entering={FadeInDown.duration(1000).springify()}
+            <Animated.View
+              entering={FadeInUp.delay(200).duration(1000).springify()}
               style={{
-                fontSize: 40,
-                fontWeight: "800",
-                color: theme.colors.text,
-              }}
-            >
-              {LADING_PAGE1.title}
-            </Animated.Text>
-            <Animated.Text
-              entering={FadeInDown.delay(100).duration(1000).springify()}
-              style={{
-                opacity: 0.5,
-                marginTop: 16,
-                fontSize: 16,
-                color: theme.colors.text,
-              }}
-            >
-              {LADING_PAGE1.description}
-            </Animated.Text>
-
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
                 alignItems: "center",
-                marginTop: 32,
-                gap: 16,
+                flex: 1,
+                justifyContent: "center",
               }}
             >
-              {/* Synchronized Animations for Buttons */}
+              <Artwork03 width={dimensions.width * 0.6} height={dimensions.width * 0.6} />
+            </Animated.View>
+
+            <View style={{ padding: 24 }}>
               <Animated.View
-                entering={FadeInDown.delay(600).duration(1000).springify()}
-                style={{ flex: 1 }}
+                entering={FadeInDown.duration(1000).springify()}
               >
-                <PrimaryButton
-                  label="Criar Conta"
-                  onPress={() => navigation.navigate("AccountType")}
+                <Text
+                  style={{
+                    fontSize: 40,
+                    fontWeight: "800",
+                    color: theme.colors.text,
+                  }}
                   accessible
-                  accessibilityLabel="Create an account button"
-                />
+                >
+                  {LADING_PAGE1.title || "Welcome!"}
+                </Text>
               </Animated.View>
 
               <Animated.View
-                entering={FadeInDown.delay(600).duration(1000).springify()}
-                style={{ flex: 1 }}
+                entering={FadeInDown.delay(100).duration(1000).springify()}
               >
-                <PrimaryButton
-                  label="Iniciar Seccao"
+                <Text
+                  style={{
+                    opacity: 0.5,
+                    marginTop: 16,
+                    fontSize: 16,
+                    color: theme.colors.text,
+                  }}
                   accessible
-                  accessibilityLabel="Log in button"
-                  onPress={() => navigation.replace("Login")}
-                />
+                >
+                  {LADING_PAGE1.description || "Discover more with us."}
+                </Text>
               </Animated.View>
+
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginTop: 32,
+                  gap: 16,
+                }}
+              >
+                <Animated.View
+                  entering={FadeInDown.delay(600).duration(1000).springify()}
+                  style={{ flex: 1 }}
+                >
+                  <PrimaryButton
+                    label="Criar Conta"
+                    onPress={() => navigation.navigate("AccountType")}
+                    accessible
+                    accessibilityLabel="Create an account button"
+                  />
+                </Animated.View>
+
+                <Animated.View
+                  entering={FadeInDown.delay(600).duration(1000).springify()}
+                  style={{ flex: 1 }}
+                >
+                  <PrimaryButton
+                    label="Iniciar Seccao"
+                    onPress={() => navigation.replace("Login")}
+                    accessible
+                    accessibilityLabel="Log in button"
+                  />
+                </Animated.View>
+              </View>
             </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+          </ScrollView>
+        </SafeAreaView>
+      </Animated.View>
     </KeyboardAvoidingView>
   );
 };

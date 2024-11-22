@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   selectedItem: {
-    backgroundColor: 'lightblue', // Change to any color you want for selected item
+    backgroundColor: "#63F92D", // Change to any color you want for selected item
   },
 });
 

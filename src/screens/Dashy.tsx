@@ -64,12 +64,12 @@ const Dashy = () => {
 
             {/* Profile Button */}
             <TouchableOpacity
-              onPress={() => navigation.navigate('Profile')}
+              onPress={() => navigation.navigate('Search')}
               accessibilityLabel="Go to Profile"
               accessible={true}
             >
               <Ionicons
-                name="person-outline"
+                name="search"
                 size={30}
                 color={theme.dark ? "#63F92D" : "#63F92D"} // Change icon color based on theme
               />
