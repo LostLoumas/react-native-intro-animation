@@ -6,7 +6,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 // Screens
 import Login from "../screens/auth/Login";
 import IntroScreen02 from "../screens/register/IntroScreen02";
-import IntroScreen03 from "../screens/register/Register2";
+import IntroScreen03 from "../screens/register/IntroScreen03";
 import IntroScreen04 from "../screens/register/IntroScreen04";
 import IntroScreen05 from "../screens/register/IntroScreen05";
 import BankSelect from "../screens/register/BankSelect";
@@ -46,6 +46,8 @@ export type RootStackParamList = {
   Search: undefined;
   Favorite: undefined;
   DrawerNavigator: undefined;
+  Profile: undefined;
+
 };
 
 // Navigators
